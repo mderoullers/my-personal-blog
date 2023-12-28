@@ -50,6 +50,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           class="lg:flex hidden h-full content-center items-center justify-end"
         >
           <div class="relative h-[260px] w-[260px]">
+            <div class="relative w-full max-w-lg">
+              <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+              <div class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+              <div class="absolute top-8 left-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+            </div>
             <div
               id="bg-profile-photo-1"
               class="origin-bottom-left translate-x-1 rotate-[-11.31deg] transform"
@@ -65,7 +70,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               alt="Profile Photo"
               class="profile-photo absolute"
             />
-          </div>
+            
         </div>
       </div>
       <p>My posts are written in French 🇫🇷 and English 🇬🇧.</p>
