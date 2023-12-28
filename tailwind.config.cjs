@@ -20,6 +20,11 @@ module.exports = {
     },
 
     extend: {
+      colors : {
+        base: withOpacity("--color-text-base"),
+        accent: withOpacity("--color-accent"),
+        link: withOpacity("--color-text-link"),
+      },
       textColor: {
         skin: {
           base: withOpacity("--color-text-base"),

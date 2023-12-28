@@ -52,15 +52,15 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           <div class="relative h-[260px] w-[260px]">
             <div class="relative w-full max-w-lg">
               <div
-                class="animate-blob absolute -left-4 top-0 h-72 w-72 rounded-full bg-purple-300 opacity-70 mix-blend-multiply blur-xl filter"
+                class="animate-blob absolute -left-4 top-0 h-72 w-72 rounded-full bg-purple-300 opacity-70 mix-blend-multiply blur-xl filter saturate-100"
               >
               </div>
               <div
-                class="animate-blob animation-delay-2000 absolute -right-4 top-0 h-72 w-72 rounded-full bg-yellow-300 opacity-70 mix-blend-multiply blur-xl filter"
+                class="animate-blob animation-delay-2000 absolute -right-4 top-0 h-72 w-72 rounded-full bg-yellow-300 opacity-70 mix-blend-multiply blur-xl filter saturate-100"
               >
               </div>
               <div
-                class="animate-blob animation-delay-4000 absolute left-10 top-8 h-72 w-72 rounded-full bg-pink-300 opacity-70 mix-blend-multiply blur-xl filter"
+                class="animate-blob animation-delay-4000 absolute left-10 top-8 h-72 w-72 rounded-full bg-pink-300 opacity-70 mix-blend-multiply blur-xl filter saturate-100"
               >
               </div>
             </div>
@@ -168,13 +168,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   #hero h1 {
     @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
   }
-  html[data-theme="light"] #hero .nameGradient {
-    @apply bg-gradient-to-t from-blue-800 to-fuchsia-600 bg-clip-text bg-repeat text-transparent;
+  #hero .nameGradient {
+    @apply bg-gradient-to-t from-link to-accent bg-clip-text bg-repeat text-transparent;
   }
-  html[data-theme="dark"] #hero .nameGradient {
-    @apply bg-gradient-to-t from-red-800 to-orange-400 bg-clip-text bg-repeat text-transparent;
-  }
-
   #hero p {
     @apply my-2;
   }
@@ -189,16 +185,16 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply rounded-4xl absolute h-[260px] w-[260px] sm:mt-11 sm:h-60 sm:w-60;
   }
   html[data-theme="light"] #hero #bg-profile-photo-1 {
-    @apply bg-fuchsia-600 opacity-20;
+    @apply bg-accent opacity-20;
   }
   html[data-theme="dark"] #hero #bg-profile-photo-1 {
-    @apply bg-orange-400 opacity-20;
+    @apply bg-accent opacity-20;
   }
   html[data-theme="light"] #hero #bg-profile-photo-2 {
-    @apply bg-indigo-500 opacity-20;
+    @apply bg-link opacity-20;
   }
   html[data-theme="dark"] #hero #bg-profile-photo-2 {
-    @apply bg-rose-500 opacity-20;
+    @apply bg-link opacity-20;
   }
   .social-wrapper {
     @apply mt-4 flex flex-col sm:flex-row sm:items-center;
