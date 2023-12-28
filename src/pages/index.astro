@@ -1,0 +1,210 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import LinkButton from "@components/LinkButton.astro";
+import Hr from "@components/Hr.astro";
+import Card from "@components/Card";
+import Socials from "@components/Socials.astro";
+import getSortedPosts from "@utils/getSortedPosts";
+import slugify from "@utils/slugify";
+import { SOCIALS } from "@config";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = getSortedPosts(posts);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+
+const socialCount = SOCIALS.filter(social => social.active).length;
+---
+
+<Layout>
+  <Header />
+
+  <main id="main-content">
+    <section id="hero">
+      <!-- Grid -->
+      <div class="grid grid-cols-3 items-start justify-center gap-4">
+        <!-- Column -->
+        <div
+          class="lg:col-span-2 col-span-3 flex h-full flex-col justify-center"
+        >
+          <h1>
+            Hi, I'm <span class="nameGradient">Maxime</span>.
+          </h1>
+          <h2 class="md:text-2xl mb-4 text-2xl font-semibold">
+            Agency Leader <span class="nameGradient">✦</span> Cloud & DevOps
+            Architect <span class="nameGradient">✦</span> Conference Organiser <span
+              class="nameGradient">✦</span
+            > Speaker
+          </h2>
+          <p class="mb-6 text-base">
+            Here, I share about my favorite topics which include <strong
+              >Cloud/DevOps, organizing IT conferences, IT management</strong
+            >, and any other subject I find interesting. Welcome aboard!
+          </p>
+        </div>
+        <!-- Column -->
+        <div
+          class="lg:flex hidden h-full content-center items-center justify-end"
+        >
+          <div class="relative h-[260px] w-[260px]">
+            <div
+              id="bg-profile-photo-1"
+              class="origin-bottom-left translate-x-1 rotate-[-11.31deg] transform"
+            >
+            </div>
+            <div
+              id="bg-profile-photo-2"
+              class="origin-bottom-left translate-x-1 rotate-[11.31deg] transform"
+            >
+            </div>
+            <img
+              src="/public/assets/photo-profile.jpg"
+              alt="Profile Photo"
+              class="profile-photo absolute"
+            />
+          </div>
+        </div>
+      </div>
+      <p>My posts are written in French 🇫🇷 and English 🇬🇧.</p>
+      <p>
+        If you'd like to get to know me better, you'll find more information in
+        the
+        <LinkButton
+          className="link-underline"
+          href="https://github.com/satnaing/astro-paper#readme"
+        >
+          About
+        </LinkButton> section.
+      </p>
+      {
+        // only display if at least one social link is enabled
+        socialCount > 0 && (
+          <div class="social-wrapper">
+            <div class="social-links">Follow me:</div>
+            <Socials />
+          </div>
+        )
+      }
+    </section>
+
+    <Hr />
+
+    {
+      featuredPosts.length > 0 && (
+        <>
+          <section id="featured">
+            <h2>Featured</h2>
+            <ul>
+              {featuredPosts.map(({ data }) => (
+                <Card
+                  href={`/posts/${slugify(data)}`}
+                  frontmatter={data}
+                  secHeading={false}
+                />
+              ))}
+            </ul>
+          </section>
+          <Hr />
+        </>
+      )
+    }
+
+    <section id="recent-posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        {
+          sortedPosts
+            .filter(({ data }) => !data.featured)
+            .map(
+              ({ data }, index) =>
+                index < 4 && (
+                  <Card
+                    href={`/posts/${slugify(data)}`}
+                    frontmatter={data}
+                    secHeading={false}
+                  />
+                )
+            )
+        }
+      </ul>
+      <div class="all-posts-btn-wrapper">
+        <LinkButton href="/posts">
+          All Posts
+          <svg xmlns="http://www.w3.org/2000/svg"
+            ><path
+              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+            ></path>
+          </svg>
+        </LinkButton>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<Footer />
+
+<style>
+  /* ===== Hero Section ===== */
+  #hero {
+    @apply pb-6 pt-8;
+  }
+  #hero h1 {
+    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+  }
+  html[data-theme="light"] #hero .nameGradient {
+    @apply bg-gradient-to-t from-blue-800 to-fuchsia-600 bg-clip-text bg-repeat text-transparent;
+  }
+  html[data-theme="dark"] #hero .nameGradient {
+    @apply bg-gradient-to-t from-red-800 to-orange-400 bg-clip-text bg-repeat text-transparent;
+  }
+
+  #hero p {
+    @apply my-2;
+  }
+  #hero a {
+    @apply text-skin-link hover:text-skin-accent;
+  }
+  #hero .profile-photo {
+    @apply rounded-4xl mt-4 h-[280px] w-[280px] object-cover sm:mt-12 sm:h-60 sm:w-64;
+  }
+  #hero #bg-profile-photo-1,
+  #bg-profile-photo-2 {
+    @apply rounded-4xl absolute h-[260px] w-[260px] sm:mt-11 sm:h-60 sm:w-60;
+  }
+  html[data-theme="light"] #hero #bg-profile-photo-1 {
+    @apply bg-fuchsia-600 opacity-20;
+  }
+  html[data-theme="dark"] #hero #bg-profile-photo-1 {
+    @apply bg-orange-400 opacity-20;
+  }
+  html[data-theme="light"] #hero #bg-profile-photo-2 {
+    @apply bg-indigo-500 opacity-20;
+  }
+  html[data-theme="dark"] #hero #bg-profile-photo-2 {
+    @apply bg-rose-500 opacity-20;
+  }
+  .social-wrapper {
+    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+  }
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+  }
+  .rounded-4xl {
+    border-radius: 2rem;
+  }
+  /* ===== Featured & Recent Posts Sections ===== */
+  #featured,
+  #recent-posts {
+    @apply pb-6 pt-12;
+  }
+  #featured h2,
+  #recent-posts h2 {
+    @apply text-2xl font-semibold tracking-wide;
+  }
+  .all-posts-btn-wrapper {
+    @apply my-8 text-center;
+  }
+</style>

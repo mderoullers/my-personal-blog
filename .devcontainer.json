@@ -1,0 +1,25 @@
+{
+    "name": "Astro",
+    "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-18",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+                "Codeium.codeium",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "astro-build.astro-vscode"
+            ]
+        }
+    },
+    "portsAttributes": {
+        "3000": {
+            "label": "Hello Remote World",
+            "onAutoForward": "notify"
+        }
+    },
+    "postCreateCommand": "npm install",
+    "remoteUser": "node"
+}
