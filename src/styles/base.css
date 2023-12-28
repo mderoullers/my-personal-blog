@@ -45,10 +45,6 @@
     @apply  outline-2 outline-offset-1 outline-skin-fill
     focus-visible:no-underline focus-visible:outline-dashed;
   }
-  /* a {
-    @apply text-violet-500 font-semibold rounded focus:outline-blue-500 focus:outline-1 focus:outline-offset-4;
-    @apply hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-blue-500 before:absolute before:left-0 before:bottom-0;
-  } */
   svg {
     @apply inline-block h-6 w-6 fill-skin-base group-hover:fill-skin-accent;
   }
@@ -77,14 +73,9 @@
     prose-img:!mt-2 prose-img:border-2 
     prose-img:border-skin-line prose-hr:!border-skin-line;
   }
-  html[data-theme="light"] .prose a {
+  .prose a {
     @apply break-words rounded font-semibold no-underline;
-    @apply relative before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:bg-blue-700 before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 hover:before:decoration-1;
-    @apply text-skin-link hover:text-skin-accent;
-  }
-  html[data-theme="dark"] .prose a {
-    @apply break-words rounded font-semibold no-underline;
-    @apply relative before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:bg-orange-500 before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 hover:before:decoration-1;
+    @apply relative before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:bg-accent before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 hover:before:decoration-1;
     @apply text-skin-link hover:text-skin-accent;
   }
   .prose thead th:first-child,
@@ -150,12 +141,7 @@
 }
 
  /* Links */
- html[data-theme="light"] .link-underline {
+.link-underline {
    @apply rounded font-semibold no-underline;
-   @apply relative before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:bg-blue-700 before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 hover:before:decoration-1;
- }
-
- html[data-theme="dark"] .link-underline {
-   @apply rounded font-semibold no-underline;
-   @apply relative before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:bg-orange-500 before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 hover:before:decoration-1;
+   @apply relative before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:bg-accent before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 hover:before:decoration-1;
  }
