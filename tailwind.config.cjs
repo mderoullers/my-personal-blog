@@ -59,7 +59,25 @@ module.exports = {
       fontFamily: {
         mono: ["IBM Plex Mono", "monospace"],
       },
-
+      animation: {
+        blob: "blob 25s infinite",
+      },
+      keyframes: {
+        blob: {
+          "0%": {
+            transform: "translate(5px, 5px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(20px, -10px) scale(1.2)",
+          },
+          "66%": {
+            transform: "translate(-10px, 40px) scale(1)",
+          },
+          "100%": {
+            transform: "tranlate(5px, 5px) scale(1)",
+          },
+        },
+      },
       typography: {
         DEFAULT: {
           css: {
