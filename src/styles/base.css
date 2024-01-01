@@ -60,8 +60,6 @@
     prose-blockquote:border-opacity-50 prose-blockquote:opacity-80
     prose-figcaption:!text-skin-base prose-figcaption:opacity-70
     prose-strong:!text-skin-base
-
-    
     prose-code:rounded prose-code:bg-skin-card 
     prose-code:bg-opacity-75 prose-code:p-1 
     prose-code:before:!content-[''] prose-code:after:!content-['']
@@ -77,6 +75,12 @@
     @apply break-words rounded font-semibold no-underline;
     @apply relative before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:bg-accent before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 hover:before:decoration-1;
     @apply text-skin-link hover:text-skin-accent;
+  }
+  .prose h1,.prose h2, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply lg:-ml-4 md:-ml-4 sm:ml-1;
+  }
+  .prose .heading-anchor {
+    @apply -left-3;
   }
   .prose thead th:first-child,
   tbody td:first-child,
