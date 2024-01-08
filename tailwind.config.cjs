@@ -62,7 +62,7 @@ module.exports = {
         transparent: "transparent",
       },
       fontFamily: {
-        mono: ["IBM Plex Mono", "monospace"],
+        mono: ["Luciole", "monospace"],
       },
       animation: {
         blob: "blob 25s infinite",

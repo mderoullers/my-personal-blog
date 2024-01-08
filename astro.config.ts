@@ -10,6 +10,7 @@ import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
 
 // https://astro.build/config
+// @ts-expect-error
 export default defineConfig({
   site: SITE.website,
   integrations: [
